@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { addCollection } from '../../actions/path-editor';
+import PathEditorContext from '../../contexts/path-editor-context';
 import ExpandedCollectionView from '../../components/collection-expand-view/collection-expand-view.component';
 import styles from './path-editor-add-collection.style.css';
 
@@ -9,6 +10,7 @@ const AddCollectionView = () => {
 
   const [collectionsByCategory, setCollections] = useState(null);
   const [expanded, setExpanded] = useState(0);
+  const { dispatch } = useContext(PathEditorContext);
 
   const putCollectionsInCategories = (collectionsFromDb) => {
     const newCollections = collectionsFromDb.reduce((acc, curCollection) => {
@@ -47,6 +49,18 @@ const AddCollectionView = () => {
     history.replace('/path-editor');
   };
 
+  const handleCollectionUseBtn = ({ _id, title, description, category }) => {
+    dispatch(
+      addCollection({
+        _id,
+        title,
+        description,
+        category,
+      })
+    );
+    history.push('/path-editor');
+  };
+
   // nested loop, optimize later?
   const collectionsRender =
     collectionsByCategory &&
@@ -55,7 +69,7 @@ const AddCollectionView = () => {
         <div className={styles.CategoryText}>{category}</div>
         <hr />
         {collectionsByCategory[category].map((collection) => (
-          <ExpandedCollectionView i={collection} expanded={expanded} setExpanded={setExpanded} />
+          <ExpandedCollectionView i={collection} expanded={expanded} setExpanded={setExpanded} onBtnClick={handleCollectionUseBtn} btnName="Use" />
         ))}
       </>
     ));
