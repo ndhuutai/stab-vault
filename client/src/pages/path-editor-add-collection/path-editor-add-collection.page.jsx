@@ -26,9 +26,7 @@ const AddCollectionView = () => {
       .then((result) => result.json())
       .then((result) => {
         // TODO: check result before pushing back to the other page
-        const collectionsFromDb = result.map(({
-          _id, title, description, category,
-        }) => ({
+        const collectionsFromDb = result.map(({ _id, title, description, category }) => ({
           _id,
           title,
           description,
@@ -49,8 +47,9 @@ const AddCollectionView = () => {
   };
 
   // nested loop, optimize later?
-  const collectionsRender = collectionsByCategory
-    && Object.keys(collectionsByCategory).map((category) => (
+  const collectionsRender =
+    collectionsByCategory &&
+    Object.keys(collectionsByCategory).map((category) => (
       <>
         <div className={styles.CategoryText}>{category}</div>
         <hr />
