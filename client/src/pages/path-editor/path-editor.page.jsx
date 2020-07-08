@@ -142,7 +142,8 @@ const PathEditor = ({ userInfo }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log('result', res);
+        setCollections([]);
+        setPathName('');
         history.push('/');
       })
       .catch((error) => {
