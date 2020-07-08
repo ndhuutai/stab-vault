@@ -10,8 +10,7 @@ import PathEditor from '../pages/path-editor/path-editor.page';
 import PathViewer from '../pages/path-viewer/path-viewer.page';
 import CollectionForm from '../pages/collection-form/collection-form.page';
 import Home from '../pages/home/home.page';
-import AllPathsSpecific from '../pages/all-paths/all-paths-specific.page'
-
+import AllPathsSpecific from '../pages/all-paths/all-paths-specific.page';
 import WithAuth from './with-auth.route';
 
 import Nav from '../components/nav/nav.component';
