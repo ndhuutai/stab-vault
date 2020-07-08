@@ -10,20 +10,7 @@
   margin-bottom: 2rem;
 }
 
-.collection__title {
-  margin-top: 0;
-}
-
 .Title {
   font-size: 2rem;
   padding: 1.2rem;
-}
-
-.collection__button {
-  padding: 8px 12px;
-  border-radius: 4px;
-  text-decoration: none;
-  display: inline-block;
-  background: dodgerblue;
-  color: white;
 }
