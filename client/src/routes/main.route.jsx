@@ -27,6 +27,7 @@ const Main = () => {
   const [pathEditorState, collectionDispatch] = useReducer(pathEditorReducer, pathEditorDefaultState);
 
   useEffect(() => {
+    if (document.cookie.includes('null')) return;
     fetch('/api/checkToken')
       .then((resp) => resp.json())
       .then((data) => setLoggedInUser(data.userId));
@@ -43,7 +44,7 @@ const Main = () => {
         <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
         <main>
           <Switch>
-            <Route path="/testing">
+            <Route path="/all-paths">
               <AllPathsSpecific />
             </Route>
 

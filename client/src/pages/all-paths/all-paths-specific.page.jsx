@@ -25,6 +25,7 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
         {collections[0] !== undefined ? (
           collections.map((collection) => <LearningPath key={collection._id} id={collection._id} {...collection} loggedInUser={loggedInUser} />)
         ) : (
+          // collections.map((collection) => <ExpandedPathView key={collection._id} i={collection} expanded={expanded} setExpanded={setExpanded} />)
           <li> Loading...</li>
         )}
       </main>

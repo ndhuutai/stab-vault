@@ -24,6 +24,7 @@
 }
 
 .Link {
+  background-color: transparent;
   position: relative;
   border-radius: 10px;
   color: var(--pink-primary);
@@ -33,6 +34,7 @@
   overflow: hidden;
   line-height: 6rem;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .Link:hover span {
@@ -57,27 +59,16 @@
 
 .Animation {
   position: fixed;
-  height: 90vh;
+  height: calc(100vh - 15rem);
   z-index: -1;
-  top: 56vh;
+  top: calc(50vh + 7.5rem);
   left: 50vw;
   transform: translate(-50%, -50%);
-  width: 100vw;
+  max-width: 100vw;
 }
 
-button {
-  background-color: transparent;
-}
-
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 1000px) {
   .Animation {
-    width: 100vw;
-    top: calc(58vh);
-  }
-}
-
-@media only screen and (min-width: 1920px) {
-  .Animation {
-    width: 1920px;
+    max-width: 1000px;
   }
 }

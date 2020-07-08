@@ -73,6 +73,7 @@ span {
   text-decoration: none;
   overflow: hidden;
   padding: 1rem 1rem;
+  cursor: pointer;
 }
 
 .NavLink:hover span {

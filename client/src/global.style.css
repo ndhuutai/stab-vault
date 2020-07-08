@@ -46,7 +46,10 @@ body {
   font-family: 'Proxima Nova', sans-serif;
 }
 
-
 button {
+  font-family: 'Proxima Nova', sans-serif;
+}
+
+textarea {
   font-family: 'Proxima Nova', sans-serif;
 }

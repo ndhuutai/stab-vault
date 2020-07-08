@@ -48,31 +48,36 @@ const CollectionForm = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} className={styles.Form}>
-      <label htmlFor="title" className={styles.Label}>
-        <span className={styles.LabelText}>Title: </span>
-        <input type="text" id="title" onChange={handleTitleChange} value={title} />
-      </label>
-      <label htmlFor="description" className={styles.Label}>
-        <span className={styles.LabelText}>Description: </span>
-        <textarea type="text" id="description" onChange={handleDescriptionChange} value={description} />
-      </label>
-      <label htmlFor="category" className={styles.Label}>
-        <span className={styles.LabelText}>Category:</span>
-        <select name="category" id="category" onChange={handleCategoryChange}>
-          <option value="">choose the category</option>
+    <div className={styles.Container}>
+      <form onSubmit={handleFormSubmit} className={styles.Form}>
+        <div className={styles.FormHeader}>
+          <h1>Add Resource</h1>
+        </div>
+        <input type="text" id="title" onChange={handleTitleChange} value={title} placeholder="Title" className={styles.Input} />
+        <textarea
+          type="text"
+          id="description"
+          onChange={handleDescriptionChange}
+          value={description}
+          placeholder="Description"
+          className={styles.TextArea}
+        />
+        <select name="category" id="category" onChange={handleCategoryChange} className={styles.Select}>
+          <option value="">Category</option>
           <option value="frontend">Front End</option>
           <option value="backend">Back End</option>
           <option value="devops">Dev Ops</option>
         </select>
-      </label>
-      <button type="button" onClick={handleCancel}>
-        Cancel
-      </button>
-      <button type="submit" className={styles.SubmitBtn}>
-        Create
-      </button>
-    </form>
+        <div className={styles.BtnContainer}>
+          <button type="button" onClick={handleCancel} className={styles.CancelBtn}>
+            Cancel
+          </button>
+          <button type="submit" className={styles.SubmitBtn}>
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

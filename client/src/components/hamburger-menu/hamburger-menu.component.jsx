@@ -33,7 +33,7 @@ const HamburgerMenu = ({ setLoggedInUser }) => {
   const { height } = useDimensions(containerRef);
 
   return (
-    <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef} className={styles.MotionNav}>
+    <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef} className={`${styles.MotionNav} ${isOpen ? styles.Point : styles.NoPoint}`}>
       <motion.div className={styles.BackgroundContainer} variants={sidebar} />
       <HamburgerModal  setLoggedInUser={setLoggedInUser} />
       <MenuToggle toggle={() => toggleOpen()} />

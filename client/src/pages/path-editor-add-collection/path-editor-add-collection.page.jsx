@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import ExpandedCollectionView from '../../components/collection-expand-view/collection-expand-view.component';
 
+import ExpandedCollectionView from '../../components/collection-expand-view/collection-expand-view.component';
 import styles from './path-editor-add-collection.style.css';
 
 const AddCollectionView = () => {
   const history = useHistory();
 
   const [collectionsByCategory, setCollections] = useState(null);
+  const [expanded, setExpanded] = useState(0);
 
   const putCollectionsInCategories = (collectionsFromDb) => {
     const newCollections = collectionsFromDb.reduce((acc, curCollection) => {
@@ -54,26 +55,13 @@ const AddCollectionView = () => {
         <div className={styles.CategoryText}>{category}</div>
         <hr />
         {collectionsByCategory[category].map((collection) => (
-          <div className={styles.CollectionView}>
-            <ExpandedCollectionView
-              key={collection.title + collection.category}
-              title={collection.title}
-              category={collection.category}
-              description={collection.description}
-              collectionID={collection._id}
-            />
-          </div>
+          <ExpandedCollectionView i={collection} expanded={expanded} setExpanded={setExpanded} />
         ))}
       </>
     ));
 
   return (
     <div className={styles.AddCollectionPage}>
-      {/* {collections.length < 1
-        ? 'Loading...'
-        : collections.map(({ title, category, description }) => (
-            <ExpandedCollectionView key={title} title={title} category={category} description={description} />
-          ))} */}
       {collectionsRender}
       <div className={styles.AddCollectionButtons}>
         <button className={styles.CancelButton} type="button" onClick={handleCancel}>

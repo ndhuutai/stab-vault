@@ -1,66 +1,27 @@
-.Background {
-  background-color: var(--white);
-  z-index: -1;
-}
-.PathEditorPage {
-  z-index: 10;
-  width: 100vw;
-  height: calc(100vh - 7.8rem);
-  overflow: hidden;
+.creator {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 20px;
 }
 
-.PathEditor,
-.PathEditor li {
-  list-style: none;
+.creator__label {
+  margin-right: 5px;
 }
 
-.PathEditor {
-  position: relative;
-  width: 200px;
+.creator__author {
+
 }
 
-.PathEditor li {
-  border-radius: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.links {
+  margin-bottom: 20px;
+  border: 1px solid grey;
+  padding: 20px;
+  border-radius: 4px;
 }
 
-.PathEditorName {
-  font-size: 2.4rem;
-  font-weight: 500;
-  color: var(--white);
+.links__item {
+  margin-top: 10px;
 }
 
-.AddCollectionButton {
-  border-radius: 10px;
-  border: 1px solid var(--gray);
-  background-color: var(--white);
-  color: var(--gray);
-  cursor: pointer;
-  font-size: 2.4rem;
-  margin-top: 5rem;
-  padding: 1rem 3.2rem;
-}
-
-.AddCollectionButton:hover {
-  color: var(--white);
-  background-color: var(--gray);
-}
-
-.Animation {
-  position: fixed;
-  z-index: 0;
-  height: 30rem;
-  bottom: 0;
-  left: 50vw;
-  transform: translate(-50%, 0);
+.links__item:first-child {
+  margin-top: 0;
 }

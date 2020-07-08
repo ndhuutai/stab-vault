@@ -2,7 +2,7 @@
   background-color: var(--gray-700);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   min-height: calc(100vh - 7.8rem);
 }
 
@@ -34,10 +34,4 @@
   font-size: 1.6rem;
   margin-left: 1.6rem;
   margin-top: 2.4rem;
-}
-
-.CollectionView {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
 }

@@ -1,18 +1,18 @@
-.CollectionItem {
+.PathItem {
   display: flex;
   justify-content: center;
   flex-flow: column nowrap;
   border-radius: 1rem;
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--black);
   width: 90%;
   margin: 1rem auto;
   min-width: 300px;
   max-width: 400px;
 }
 
-.CollectionView,
-.CollectionHeader {
+.PathView,
+.PathHeader {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -20,11 +20,11 @@
   cursor: pointer;
 }
 
-.CollectionView {
+.PathView {
   margin: 0 auto;
 }
 
-.CollectionHeader {
+.PathHeader {
   height: auto;
   padding: 1rem;
   margin: 0 auto;

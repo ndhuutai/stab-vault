@@ -44,6 +44,7 @@ router.post('/', async (req, res) => {
     // create user path
     const userPath = new UserPath(userPathDetails);
     await userPath.save();
+    console.log(userPath);
     // find the who sent this request and add the above userpath in.
     const user = await User.findById(id).exec();
     user.userCreatedPaths.push(user._id);

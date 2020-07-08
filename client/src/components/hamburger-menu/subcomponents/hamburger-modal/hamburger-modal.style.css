@@ -5,6 +5,7 @@
   position: absolute;
   top: 10rem;
   width: 23rem;
+  pointer-events: inherit;
 }
 
 .IconPlaceholder {
