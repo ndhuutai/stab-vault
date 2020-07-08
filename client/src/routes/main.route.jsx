@@ -20,6 +20,7 @@ import SavedCollections from '../components/learning-paths/saved-collections/sav
 import AddCollectionView from '../pages/path-editor-add-collection/path-editor-add-collection.page';
 import pathEditorReducer, { defaultState as pathEditorDefaultState } from '../reducers/path-editor';
 import PathEditorContext from '../contexts/path-editor-context';
+import CollectionViewer from '../pages/collection-viewer/collection-viewer.page';
 
 const Main = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
@@ -84,6 +85,10 @@ const Main = () => {
 
             <Route path="/path-viewer" exact>
               <WithAuth Component={PathViewer} />
+            </Route>
+
+            <Route path="/collection-viewer">
+              <WithAuth Component={CollectionViewer} />
             </Route>
 
             <Route path="/path-editor/add-collection">
