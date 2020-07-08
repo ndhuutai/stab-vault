@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -8,26 +8,12 @@ import PathEditorContext from '../../contexts/path-editor-context';
 import { addCollection } from '../../actions/path-editor';
 import styles from './collection-expand-view.css';
 
-const ExpandedCollectionView = ({ i, expanded, setExpanded }) => {
+const ExpandedCollectionView = ({ i, expanded, setExpanded, onBtnClick, btnName }) => {
   // if you change the variable i to anything else it breaks. i don't know why.
   const isOpen = i === expanded;
-  const {
-    collectionID, title, description, category,
-  } = i;
+  const { _id, title, description, category } = i;
   const history = useHistory();
   const { dispatch } = useContext(PathEditorContext);
-
-  const handleUse = () => {
-    dispatch(
-      addCollection({
-        _id: collectionID,
-        title,
-        description,
-        category,
-      }),
-    );
-    history.push('/path-editor');
-  };
 
   return (
     <div className={styles.CollectionItem}>
@@ -54,8 +40,8 @@ const ExpandedCollectionView = ({ i, expanded, setExpanded }) => {
           >
             <motion.div transition={{ duration: 0.8 }} className={styles.CollectionView}>
               <p>{description}</p>
-              <button className={styles.Button} onClick={handleUse} type="button">
-                Use
+              <button className={styles.Button} onClick={() => onBtnClick(i)} type="button">
+                {btnName}
               </button>
             </motion.div>
           </motion.section>
@@ -65,4 +51,4 @@ const ExpandedCollectionView = ({ i, expanded, setExpanded }) => {
   );
 };
 
-export default ExpandedCollectionView;
+export default memo(ExpandedCollectionView);
