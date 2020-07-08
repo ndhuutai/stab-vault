@@ -7,6 +7,7 @@ const CollectionForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
+  const [linkInput, setLinkInput] = useState([]);
 
   const history = useHistory();
 
@@ -26,8 +27,15 @@ const CollectionForm = () => {
     history.replace('/path-editor/add-collection');
   };
 
+  const handleAddLink = () => {
+    const linkInputEl = <input type="text" id="links" className={styles.Input} placeholder="link to resource" />;
+    setLinkInput([...linkInput, linkInputEl]);
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    console.log('form event', e);
 
     fetch('/api/collections', {
       method: 'POST',
@@ -62,6 +70,12 @@ const CollectionForm = () => {
           placeholder="Description"
           className={styles.TextArea}
         />
+        {linkInput.length > 0 && linkInput}
+        <div className={styles.BtnContainer}>
+          <button type="button" className={styles.SubmitBtn} onClick={handleAddLink}>
+            Add Link
+          </button>
+        </div>
         <select name="category" id="category" onChange={handleCategoryChange} className={styles.Select}>
           <option value="">Category</option>
           <option value="frontend">Front End</option>
