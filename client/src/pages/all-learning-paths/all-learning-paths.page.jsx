@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import LearningPath from '../../components/learning-paths/learning-path/learning-path.component';
+import styles from './all-learning-paths.style.css';
 
 const AllLearningPaths = ({ loggedInUser, userPaths }) => {
   const [learningPaths, setLearningPaths] = useState([]);
   const [searchText, setSearchText] = useState('');
   const { userId } = useParams();
+  // const [learningPathsByCategory, setlearningPathsByCategory] = useState(null);
 
   // transform likes to number
   const transformLikes = (lPaths) =>
@@ -47,7 +49,6 @@ const AllLearningPaths = ({ loggedInUser, userPaths }) => {
   }, [userId]);
 
   const handleSearchChange = (e) => {
-    console.log(e.target.value);
     const text = e.target.value.toLowerCase();
     setSearchText(text);
   };
@@ -63,40 +64,46 @@ const AllLearningPaths = ({ loggedInUser, userPaths }) => {
     }
   };
 
-  const learningPathsToRender = learningPaths.filter((collection) => {
-    if (collection.tags.length > 0) {
-      for (let i = 0; i < collection.tags.length; i += 1) {
-        if (collection.tags[i].toLowerCase().includes(searchText)) {
+  // const putLearningPathsInCategories = (learningPathsFromDb) => {
+  //   const newLearningPaths = learningPathsFromDb.reduce((acc, curPath) => {
+  //     if (!acc[curPath.category]) {
+  //       acc[curPath.category] = [];
+  //     }
+  //     acc[curPath.category].push(curPath);
+  //     return acc;
+  //   }, {});
+
+  //   setlearningPathsByCategory(learningPathsByCategory);
+  // };
+
+  const learningPathsToRender = learningPaths.filter((path) => {
+    if (path.tags.length > 0) {
+      for (let i = 0; i < path.tags.length; i += 1) {
+        if (path.tags[i].toLowerCase().includes(searchText)) {
           return true;
         }
       }
     }
-    return collection.description.toLowerCase().includes(searchText);
+    return path.description.toLowerCase().includes(searchText);
   });
 
   return (
-    <div>
+    <div className={styles.Container}>
       <h1>{userPaths ? `${userId}'s Learning Paths` : 'All Learning Paths'}</h1>
 
       <div>
-        <label htmlFor="search-input">
-          <span>Search</span>
-          <input id="search-input" type="text" onChange={handleSearchChange} />
-        </label>
-        <label htmlFor="filter-select">
-          <span>Filter by:</span>
-          <select name="filter" id="filter-select" onChange={handleFilterChange}>
-            <option value="likes">Likes</option>
-            <option value="saved">Saved</option>
-          </select>
-        </label>
-        <label htmlFor="sort-select">
-          <span>Sort by:</span>
-          <select name="sort" id="sort-select">
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-          </select>
-        </label>
+        <label htmlFor="search-input">Search</label>
+        <input id="search-input" type="text" onChange={handleSearchChange} />
+        <label htmlFor="filter-select">Filter by:</label>
+        <select name="filter" id="filter-select" onChange={handleFilterChange}>
+          <option value="likes">Likes</option>
+          <option value="saved">Saved</option>
+        </select>
+        <label htmlFor="sort-select">Sort by:</label>
+        <select name="sort" id="sort-select">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
       </div>
 
       {learningPathsToRender[0] !== undefined ? (
@@ -104,7 +111,7 @@ const AllLearningPaths = ({ loggedInUser, userPaths }) => {
           <LearningPath
             key={learningPath._id}
             id={learningPath._id}
-            title={learningPath.name}
+            name={learningPath.name}
             description={learningPath.description}
             author={learningPath.author}
             loggedInUser={loggedInUser}
